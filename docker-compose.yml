@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  db:
+    build:
+      context: ./
+      dockerfile: ./docker/db/Dockerfile
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    # volumes:
+    #   - ./docker/db/sql:/docker-entrypoint-initdb.d
+    container_name: db
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: brief-glossary
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - '33306:3306'
+  web:
+    build:
+      context: ./
+      dockerfile: ./docker/web/Dockerfile
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./brief-glossary:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
