@@ -16,4 +16,5 @@ $ pip install -r requirements.txt
 
 ```
 $ docker-compose run web django-admin.py startproject brief-glossary .
+python manage.py startapp 
 ```
