@@ -19,9 +19,9 @@ services:
     build:
       context: ./
       dockerfile: ./docker/web/Dockerfile
-    command: python3 manage.py runserver 0.0.0.0:8000
+    command: bash -c "cd brief-glossary && python3 manage.py runserver 0.0.0.0:8000"
     volumes:
-      - ./brief-glossary:/code
+      - .:/code
     ports:
       - "8000:8000"
     depends_on:

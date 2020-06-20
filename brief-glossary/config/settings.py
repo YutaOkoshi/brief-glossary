@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_mysql',
+    'glossary',
+    'user',
+    'word',
 ]
 
 MIDDLEWARE = [
@@ -80,6 +84,9 @@ DATABASES = {
         'USER': 'root',
         'HOST': 'db',
         'PORT': 3306,
+        'OPTIONS': {
+          'charset': 'utf8mb4',
+        },
     }
 }
 
