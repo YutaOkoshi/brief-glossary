@@ -7,8 +7,12 @@ class Word(models.Model):
     class Meta:
         db_table = 'word'
 
+    word = models.CharField(
+        verbose_name='単語',
+        max_length=255,
+    )
     info = JSONField(
-        verbose_name='名前',
+        verbose_name='属性',
     )
     glossary_id = models.ForeignKey(
         'glossary.Glossary',
@@ -17,12 +21,15 @@ class Word(models.Model):
 
     deleted = models.DateTimeField(
         verbose_name='削除日',
-        null=True
+        null=True,
+        blank=True,
     )
     deleted_user_id = models.ForeignKey(
         'user.User',
         on_delete=models.CASCADE,
-        related_name="deleted_user_id"
+        related_name="deleted_user_id",
+        null=True,
+        blank=True,
     )
     created = models.DateTimeField(
         verbose_name='作成日',
@@ -44,7 +51,7 @@ class Word(models.Model):
     )
 
     def __str__(self):
-        return self.name
+        return self.word
 
 # TODO: 単語変更履歴を見れるようにしたい
 

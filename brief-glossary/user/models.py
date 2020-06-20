@@ -17,11 +17,13 @@ class User(models.Model):
     )
     memo = models.TextField(
         verbose_name='メモ',
-        null=True
+        null=True,
+        blank=True,
     )
     deleted = models.DateTimeField(
         verbose_name='削除日',
-        null=True
+        null=True,
+        blank=True,
     )
     created = models.DateTimeField(
         verbose_name='作成日',
@@ -67,6 +69,7 @@ class GlossaryUser(models.Model):
     deleted = models.DateTimeField(
         verbose_name='削除日',
         null=True,
+        blank=True,
     )
     created = models.DateTimeField(
         verbose_name='作成日',

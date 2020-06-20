@@ -18,6 +18,7 @@ class Glossary(models.Model):
     deleted = models.DateTimeField(
         verbose_name='削除日',
         null=True,
+        blank=True,
     )
     created = models.DateTimeField(
         verbose_name='作成日',
