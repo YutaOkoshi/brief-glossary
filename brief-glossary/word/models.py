@@ -24,10 +24,10 @@ class Word(models.Model):
         null=True,
         blank=True,
     )
-    deleted_user_id = models.ForeignKey(
+    deleted_user = models.ForeignKey(
         'user.User',
         on_delete=models.CASCADE,
-        related_name="deleted_user_id",
+        related_name="deleted_user",
         null=True,
         blank=True,
     )
@@ -35,19 +35,19 @@ class Word(models.Model):
         verbose_name='作成日',
         auto_now_add=True
     )
-    created_user_id = models.ForeignKey(
+    created_user = models.ForeignKey(
         'user.User',
         on_delete=models.CASCADE,
-        related_name="created_user_id"
+        related_name="created_user"
     )
     modified = models.DateTimeField(
         verbose_name='更新日',
         auto_now=True
     )
-    modified_user_id = models.ForeignKey(
+    modified_user = models.ForeignKey(
         'user.User',
         on_delete=models.CASCADE,
-        related_name="modified_user_id"
+        related_name="modified_user"
     )
 
     def __str__(self):

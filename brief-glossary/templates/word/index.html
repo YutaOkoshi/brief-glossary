@@ -3,10 +3,21 @@
     <body>
         <p>Hello World</p>
         <p>This is index.html</p>
-        <ul>
-            {% for item in object_list %}
-            <li>{{ item }}</li>
+        <table border="1">
+            <tr>
+                <th>word</th>
+                <th>info</th>
+                <th>modified</th>
+                <th>modified_user</th>
+            </tr>
+            {% for word in object_list %}
+            <tr>
+                <td>{{ word.word }}</td>
+                <td>{{ word.info }}</td>
+                <td>{{ word.modified }}</td>
+                <td>{{ word.modified_user }}</td>
+            </tr>
             {% endfor %}
-        </ul>
+        </table>
     </body>
 </html>
