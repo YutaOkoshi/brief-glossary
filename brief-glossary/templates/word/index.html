@@ -1,23 +1,33 @@
-<html>
-    <head>test</head>
-    <body>
-        <p>Hello World</p>
-        <p>This is index.html</p>
-        <table border="1">
-            <tr>
-                <th>word</th>
-                <th>info</th>
-                <th>modified</th>
-                <th>modified_user</th>
-            </tr>
-            {% for word in object_list %}
-            <tr>
-                <td>{{ word.word }}</td>
-                <td>{{ word.info }}</td>
-                <td>{{ word.modified }}</td>
-                <td>{{ word.modified_user }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}の一覧{% endblock title %}
+
+{% block content %}
+    <h4 class="mt-4 border-bottom">書籍の一覧</h4>
+    <a href="{% url 'add' %}" class="btn btn-primary btn-sm my-3">追加</a>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">書籍名</th>
+          <th scope="col">出版社</th>
+          <th scope="col">ページ数</th>
+          <th scope="col">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for word in object_list %}
+        <tr>
+          <th scope="row">{{ word.id }}</th>
+          <td>{{ word.name }}</td>
+          <td>{{ word.publisher }}</td>
+          <td>{{ word.page }}</td>
+          <td>
+            <a href="{% url 'detail' word_id=word.id %}" class="btn btn-outline-primary btn-sm">修正</a>
+            <a href="{% url 'result' word_id=word.id %}" class="btn btn-outline-danger btn-sm">削除</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock content %}

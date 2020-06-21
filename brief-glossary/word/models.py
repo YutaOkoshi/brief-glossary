@@ -14,7 +14,7 @@ class Word(models.Model):
     info = JSONField(
         verbose_name='属性',
     )
-    glossary_id = models.ForeignKey(
+    glossary = models.ForeignKey(
         'glossary.Glossary',
         on_delete=models.CASCADE,
     )

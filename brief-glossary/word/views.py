@@ -8,6 +8,7 @@ from .models import Word
 
 class IndexView(generic.ListView):
     template_name = 'word/index.html'
+    paginate_by = 3
     # context_object_name = 'latest_question_list'
 
     def get_queryset(self):
@@ -24,6 +25,10 @@ class ResultsView(generic.DetailView):
     model = Word
     template_name = 'word/results.html'
 
+
+class AddView(generic.DetailView):
+    model = Word
+    template_name = 'word/add.html'
 
 # def vote(request, question_id):
 #     question = get_object_or_404(Word, pk=question_id)
