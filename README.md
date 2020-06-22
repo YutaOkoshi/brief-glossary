@@ -43,6 +43,12 @@ $ docker ps
 # 詳細は「https://qiita.com/Yuki_Oshima/items/d3b52c553387685460b0」
 ```
 
+# URL
+
+- 管理画面
+    - http://localhost:8000/admin/login/?next=/admin/
+
+
 #  開発時に覚えておくと役立つコマンド
 
 以下手順はすべてコンテナー内で実行しています。
