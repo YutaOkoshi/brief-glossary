@@ -17,6 +17,7 @@ class Word(models.Model):
     glossary = models.ForeignKey(
         'glossary.Glossary',
         on_delete=models.CASCADE,
+        related_name="glossary",
     )
 
     deleted = models.DateTimeField(
