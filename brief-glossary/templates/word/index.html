@@ -18,11 +18,11 @@
         {% for word in object_list %}
         <tr>
           <th scope="row">{{ word.id }}</th>
-          <td>{{ word.name }}</td>
+          <td>{{ word.word }}</td>
           <td>{{ word.info }}</td>
           <td>
-            <a href="{% url 'detail' word_id=word.id %}" class="btn btn-outline-primary btn-sm">修正</a>
-            <a href="{% url 'result' word_id=word.id %}" class="btn btn-outline-danger btn-sm">削除</a>
+            <a href="{% url 'detail' word.id %}" class="btn btn-outline-primary btn-sm">修正</a>
+            <a href="{% url 'delete' word.id %}" class="btn btn-outline-danger btn-sm">削除</a>
           </td>
         </tr>
         {% endfor %}

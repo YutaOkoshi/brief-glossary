@@ -21,15 +21,14 @@ class IndexView(generic.ListView):
     #     return
 
 
-
 class DetailView(generic.DetailView):
     model = Word
     template_name = 'word/detail.html'
 
 
-class ResultsView(generic.DetailView):
+class DeleteView(generic.DetailView):
     model = Word
-    template_name = 'word/results.html'
+    template_name = 'word/delete.html'
 
 
 class AddView(generic.DetailView):
