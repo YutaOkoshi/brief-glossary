@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}の一覧{% endblock title %}
+{% block title %}単語の一覧{% endblock title %}
 
 {% block content %}
     <h4 class="mt-4 border-bottom">単語の一覧</h4>
@@ -9,9 +9,8 @@
       <thead>
         <tr>
           <th scope="col">ID</th>
-          <th scope="col">書籍名</th>
-          <th scope="col">出版社</th>
-          <th scope="col">ページ数</th>
+          <th scope="col">単語</th>
+          <th scope="col">info</th>
           <th scope="col">操作</th>
         </tr>
       </thead>
@@ -20,8 +19,7 @@
         <tr>
           <th scope="row">{{ word.id }}</th>
           <td>{{ word.name }}</td>
-          <td>{{ word.publisher }}</td>
-          <td>{{ word.page }}</td>
+          <td>{{ word.info }}</td>
           <td>
             <a href="{% url 'detail' word_id=word.id %}" class="btn btn-outline-primary btn-sm">修正</a>
             <a href="{% url 'result' word_id=word.id %}" class="btn btn-outline-danger btn-sm">削除</a>

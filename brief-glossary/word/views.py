@@ -12,8 +12,14 @@ class IndexView(generic.ListView):
     # context_object_name = 'latest_question_list'
 
     def get_queryset(self):
-        """Return the last five modified word."""
         return Word.objects.order_by('-modified')[:5]
+
+    # def get_context_data(self):
+    #     context = super().get_context_data(**data)
+    #     context["bar"] = Word._meta.get_fields()
+    #     fields =
+    #     return
+
 
 
 class DetailView(generic.DetailView):
