@@ -23,7 +23,8 @@ jobs:
         django_path: brief-glossary
         # いったんテストはパス
         unit_testing: false
-        deploy: true
+        # deployもいったんパス
+        deploy: false
         min_coverage: 10
         # postgresql_required: true
         security_check: true
