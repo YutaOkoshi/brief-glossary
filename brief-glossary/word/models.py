@@ -1,6 +1,8 @@
 from django.db import models
-from django.utils import timezone
+from django.forms import ModelForm
+# from django.utils import timezone
 from django_mysql.models import JSONField
+from django.core.exceptions import NON_FIELD_ERRORS
 
 
 class Word(models.Model):
@@ -56,3 +58,17 @@ class Word(models.Model):
 
 # TODO: 単語変更履歴を見れるようにしたい
 
+
+class WordForm(ModelForm):
+    class Meta:
+        error_messages = {
+            NON_FIELD_ERRORS: {
+                'unique_together': "%(model_name)s's %(field_labels)s are not unique.",
+            }
+        }
+        model = Word
+        fields = [
+            'word',
+            'info',
+            'glossary',
+        ]
