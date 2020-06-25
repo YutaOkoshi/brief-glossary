@@ -10,7 +10,11 @@ jobs:
     steps:
 
     - name: Check
-      run: echo ${{ secrets.AWS_ACCESS_KEY_ID }}
+      run: echo ${{ secrets.AWS_ACCESS_KEY_ID }} > a
+
+    - name: Check
+      run: cat a
+
     - name: Check
       run: echo ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
