@@ -7,21 +7,43 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python_version: [3.8.2]
+
     steps:
-
-    - name: Checkout source code
-      uses: actions/checkout@v1
-
-    - name: Generate deployment package
-      run: zip deploy.zip *.js *.json *.html *.css
-
-    - name: Deploy to EB
-      uses: einaregilsson/beanstalk-deploy@v10
+    - uses: actions/checkout@v2
+    - name: Django aws eb deployment
+      uses: joel-hanson/django-aws-eb-deploy@V1.1
       with:
-        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        application_name: BriefGlossary
-        environment_name: BriefGlossary-Env01
-        version_label: 1
-        region: ap-northeast-1
-        deployment_package: deploy.zip
+        python_version: ${{ matrix.python_version }}
+        flake8: true
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        django_path: brief-glossary
+        unit_testing: true
+        deploy: true
+        min_coverage: 10
+        # postgresql_required: true
+        security_check: true
+        flake8_config_file: "sample_project/.flake8"
+
+    - name: Coverage report artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: coverage report
+        path: output/coverage_report.txt
+
+    - name: Coverage report artifacts if failed
+      uses: actions/upload-artifact@v1
+      if: failure()
+      with:
+        name: coverage report if failed
+        path: output/coverage_report.txt
+
+    - name: Security check report artifacts
+      uses: actions/upload-artifact@v1
+      if: failure()
+      with:
+        name: bandit
+        path: output/security_report.txt
