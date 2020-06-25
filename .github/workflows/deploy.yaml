@@ -26,7 +26,7 @@ jobs:
         min_coverage: 10
         # postgresql_required: true
         security_check: true
-        flake8_config_file: "sample_project/.flake8"
+        flake8_config_file: "tox.ini"
 
     - name: Coverage report artifacts
       uses: actions/upload-artifact@v1
