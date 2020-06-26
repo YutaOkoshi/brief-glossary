@@ -43,8 +43,18 @@ $ docker ps
 # 詳細は「https://qiita.com/Yuki_Oshima/items/d3b52c553387685460b0」
 ```
 
+## Docker toolboxを利用している人向け
+
+- Windows Homeなどを利用していてDocker toolboxを利用している人は以下コマンドを実施しDocker Engineが動いているIPを調べて、localhostをそのIPで読み替えてください
+
+```
+$ docker-machine ip default
+```
+
 # URL
 
+- Word登録画面
+    - http://localhost:8000/word
 - 管理画面
     - http://localhost:8000/admin/login/?next=/admin/
 
