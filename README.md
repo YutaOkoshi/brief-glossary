@@ -72,3 +72,9 @@ $ python manage.py createsuperuser
 ```
 $ python manage.py squashmigrations brief-glossary 0050_remove_book_price
 ```
+
+## Docker環境の断捨離
+```
+$ docker system prune  -a
+```
+
