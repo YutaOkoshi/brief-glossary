@@ -8,10 +8,6 @@ class User(AbstractUser):
     class Meta:
         db_table = 'auth_user'
 
-    name = models.CharField(
-        verbose_name='名前',
-        max_length=100
-    )
     email = models.EmailField(
         verbose_name='メールアドレス',
         max_length=255
@@ -34,9 +30,6 @@ class User(AbstractUser):
         verbose_name='更新日',
         auto_now=True
     )
-
-    def __str__(self):
-        return self.name
 
 # TODO: ユーザー変更履歴を見れるようにしたい
 
