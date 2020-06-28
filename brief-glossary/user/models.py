@@ -1,11 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 # from django.utils import timezone
 # from django_mysql.models import JSONField
 
 
-class User(models.Model):
+class User(AbstractUser):
     class Meta:
-        db_table = 'user'
+        db_table = 'auth_user'
 
     name = models.CharField(
         verbose_name='名前',
