@@ -19,7 +19,7 @@ services:
     build:
       context: ./
       dockerfile: ./docker/web/Dockerfile
-    command: bash -c "cd brief-glossary && python3 manage.py runserver 0.0.0.0:8000"
+    command: bash -c "./wait-for-it.sh db:3306 && cd brief-glossary && python3 manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
     ports:
